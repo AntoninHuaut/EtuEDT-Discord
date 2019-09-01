@@ -1,0 +1,11 @@
+{
+    "discord": {
+        "prefix": "edt.",
+        "token": ""
+    },
+    "bot": {
+        "activity": "edt.info",
+        "owner": ["<discord id>"]
+    },
+    "edtURL": "https://edt.maner.fr/"
+}

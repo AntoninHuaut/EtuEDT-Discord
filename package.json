@@ -1,0 +1,16 @@
+{
+  "name": "etuedt-discord",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/apps.js",
+  "scripts": {
+    "start": "node src/apps.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "moment": "^2.24.0",
+    "node-fetch": "^2.6.0"
+  }
+}
