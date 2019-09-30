@@ -15,7 +15,7 @@ exports.cmd = (msg, content) => {
             sql.updateEDTName(msg.author.id, edtContent.toLowerCase());
 
             edtUtils.getEDTJson(item[0].edtId)
-                .then(data => msg.channel.send(embed.getEdtNDay(msg, data, nDay)).catch(o => {}))
+                .then(data => msg.channel.send(embed.getEdtNDay(msg, item[0], data, nDay)).catch(o => {}))
                 .catch(() => edtUtils.sendErrMsg(msg));
         });
 }

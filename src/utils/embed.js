@@ -20,9 +20,10 @@ exports.getListEDT = (msg, res) => {
     return embed;
 }
 
-exports.getEdtNDay = (msg, data, nDay) => {
+exports.getEdtNDay = (msg, edtInfos, data, nDay) => {
     let embed = getEmbed(msg);
-    embed.setAuthor(embed.author.name + " - " + getNDayInfos(nDay), embed.author.icon_url, embed.author.url);
+    embed.setAuthor(embed.author.name + " - " + edtInfos.edtName + " - " + getNDayInfos(nDay), embed.author.icon_url, embed.author.url);
+    embed.setTitle("Update le : " + moment(edtInfos.lastUpdate).format("DD/MM/YYYY [à] HH:mm"));
     data.filter(item => edtUtils.isDateValid(moment(item.start), nDay))
         .forEach(item => {
             let location = item.location || "?";
