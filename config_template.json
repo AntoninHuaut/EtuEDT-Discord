@@ -1,11 +1,18 @@
 {
     "discord": {
-        "prefix": "edt.",
+        "prefix": "e.",
         "token": ""
     },
     "bot": {
-        "activity": "edt.info",
+        "activity": "e.info",
         "owner": ["<discord id>"]
+    },
+    "sql": {
+        "host": "",
+        "port": 3306,
+        "database": "",
+        "user": "",
+        "password": ""
     },
     "edtURL": "https://edt.maner.fr/"
 }

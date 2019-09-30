@@ -7,6 +7,7 @@ const edtUtils = require('./edtUtils');
 exports.getInfos = (msg) => {
     let embed = getEmbed(msg);
     embed.addField(`${config.discord.prefix}`, "Affiche la liste des emplois du temps", false);
+    embed.addField(`${config.discord.prefix}me`, "Affiche votre emploi du temps favori", false);
     embed.addField(`${config.discord.prefix}url`, "Site de consultation des emplois du temps", false);
     embed.addField(`${config.discord.prefix}<nom>`, "Affiche l'emploi du temps à la date du jour", false);
     embed.addField(`${config.discord.prefix}<nom> <nombre jour>`, "Affiche l'emploi du temps à x jour(s) de différence", false);

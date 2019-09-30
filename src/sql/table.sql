@@ -1,0 +1,1 @@
+CREATE TABLE if not exists edtdiscord_link(userId VARCHAR(64), edtName VARCHAR(64), CONSTRAINT link_pk PRIMARY KEY(userId));

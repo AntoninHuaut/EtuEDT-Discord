@@ -1,7 +1,8 @@
 const edtUtils = require('../utils/edtUtils');
 const embed = require('../utils/embed');
+const sql = require('../sql/');
 
-module.exports = (msg, content) => {
+exports.cmd = (msg, content) => {
     edtUtils.getEDTList()
         .catch(() => edtUtils.sendErrMsg(msg))
         .then(res => {
@@ -10,6 +11,8 @@ module.exports = (msg, content) => {
             let nDay = content.length > 1 && !isNaN(content[1]) ? parseInt(content[1]) : 0;
             let item = res.filter(i => i.edtName.replace(/ /g, '').toLowerCase().includes(edtContent.toLowerCase()))
             if (item.length != 1) return msg.reply(`**${item.length}** résultat(s) - **Filtre :** ${edtContent}\n\n${resultToStr(item)}`).catch(o => {});
+
+            sql.updateEDTName(msg.author.id, edtContent.toLowerCase());
 
             edtUtils.getEDTJson(item[0].edtId)
                 .then(data => msg.channel.send(embed.getEdtNDay(msg, data, nDay)).catch(o => {}))
