@@ -16,7 +16,23 @@ exports.getInfos = (msg) => {
 
 exports.getListEDT = (msg, res) => {
     let embed = getEmbed(msg);
-    res.forEach(item => embed.addField(item.edtName, "\u200B", false));
+    res.forEach(univ => {
+        embed.addField(`**${univ.nomUniv} :**`, "\u200B", false);
+
+        univ.data.forEach(annee => {
+            let str = "";
+
+            annee.data.forEach(edt => {
+                str += `\n  • ${edt.edtName}`;
+            });
+
+            embed.addField(`${annee.numAnnee}A`, str, true);
+        });
+
+        if (res.indexOf(univ) > 0 && res.indexOf(univ) + 1 < res.length)
+            embed.addBlankField(false);
+    });
+
     return embed;
 }
 
