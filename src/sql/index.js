@@ -29,6 +29,6 @@ exports.getConnection = () => {
     return con;
 };
 
-const link = require('./link');
-exports.getEDTName = link.getEDTName;
-exports.updateEDTName = link.updateEDTName;
+const edtSQL = require('./edtSQL');
+exports.getEDTName = edtSQL.getEDTName;
+exports.updateEDTName = edtSQL.updateEDTName;

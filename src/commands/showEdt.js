@@ -9,7 +9,9 @@ exports.cmd = (msg, content) => {
             content = content.split(" ");
             let edtContent = content[0];
             let nDay = content.length > 1 && !isNaN(content[1]) ? parseInt(content[1]) : 0;
-            let item = res.filter(i => i.edtName.replace(/ /g, '').toLowerCase().includes(edtContent.toLowerCase()))
+
+            let item = getEDTByName(res, edtContent);
+
             if (item.length != 1) return msg.reply(`**${item.length}** résultat(s) - **Filtre :** ${edtContent}\n\n${resultToStr(item)}`).catch(o => {});
 
             sql.updateEDTName(msg.author.id, edtContent.toLowerCase());
@@ -18,6 +20,20 @@ exports.cmd = (msg, content) => {
                 .then(data => msg.channel.send(embed.getEdtNDay(msg, item[0], data, nDay)).catch(o => {}))
                 .catch(() => edtUtils.sendErrMsg(msg));
         });
+}
+
+function getEDTByName(edtList, edtContent) {
+    let res = [];
+
+    edtList.forEach(univ => {
+        univ.data.forEach(annee => {
+            let tmpRes = annee.data.filter(i => i.edtName.replace(/ /g, '').toLowerCase().includes(edtContent.toLowerCase()));
+
+            tmpRes.forEach(i => res.push(i));
+        });
+    });
+
+    return res;
 }
 
 function resultToStr(item) {
