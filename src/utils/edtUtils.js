@@ -20,7 +20,8 @@ function convertEDTList(edtList) {
             edtName: item.edtName,
             numUniv: item.numUniv,
             nomUniv: item.nomUniv,
-            numAnnee: item.numAnnee
+            numAnnee: item.numAnnee,
+            lastUpdate: item.lastUpdate
         };
     });
 
