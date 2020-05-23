@@ -8,12 +8,12 @@ exports.info = (msg) => {
 }
 
 exports.url = (msg) => {
-    msg.reply("Emploi du temps en ligne : " + config.edtURL).catch(o => {});
+    msg.reply("Emploi du temps en ligne : " + config.url.front).catch(o => {});
 }
 
 exports.me = (msg, content) => {
     sql.getEDTName(msg.author.id).then(edtName => {
-        if (!edtName.length) return msg.reply("Vous n'avez pas d'emploi du temps favori").catch(o => {});
+        if (!edtName.length) return msg.reply("Vous n'avez jamais consulté d'emploi du temps").catch(o => {});
 
         edtName = edtName[0].edtName;
         content = content.split(" ");

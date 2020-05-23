@@ -4,7 +4,7 @@ const config = require('../../config.json');
 
 exports.getEDTList = () => {
     return new Promise((resolve, reject) => {
-        fetch(`${config.edtURL}data/`)
+        fetch(config.url.back)
             .then(res => res.json())
             .then(res => {
                 if (!res || !!res.error) return reject(res);
@@ -18,8 +18,8 @@ function convertEDTList(edtList) {
         return {
             edtId: item.edtId,
             edtName: item.edtName,
-            numUniv: item.numUniv,
-            nomUniv: item.nomUniv,
+            numEta: item.numEta,
+            nomEta: item.nomEta,
             numAnnee: item.numAnnee,
             lastUpdate: item.lastUpdate
         };
@@ -28,15 +28,15 @@ function convertEDTList(edtList) {
     let edtFinalList = [];
 
     edtList.forEach(item => {
-        let itemUniv = edtFinalList.find(subItem => subItem.numUniv == item.numUniv);
-        if (!itemUniv)
+        let itemEta = edtFinalList.find(subItem => subItem.numEta == item.numEta);
+        if (!itemEta)
             edtFinalList.push({
-                numUniv: item.numUniv,
-                nomUniv: item.nomUniv,
+                numEta: item.numEta,
+                nomEta: item.nomEta,
                 data: []
             });
-        let indexUniv = itemUniv ? edtFinalList.indexOf(itemUniv) : edtFinalList.length - 1;
-        let dataAnnee = edtFinalList[indexUniv].data;
+        let indexEta = itemEta ? edtFinalList.indexOf(itemEta) : edtFinalList.length - 1;
+        let dataAnnee = edtFinalList[indexEta].data;
 
         let itemAnnee = dataAnnee.find(subItem => subItem.numAnnee == item.numAnnee);
         if (!itemAnnee)
@@ -53,7 +53,7 @@ function convertEDTList(edtList) {
 
 exports.getEDTJson = (edtId) => {
     return new Promise((resolve, reject) =>
-        fetch(`${config.edtURL}data/${edtId}/json`)
+        fetch(`${config.url.back}/${edtId}/json`)
         .then(res => res.json())
         .then(res => {
             if (!res || !!res.error) return reject(res);

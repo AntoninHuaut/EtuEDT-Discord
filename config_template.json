@@ -14,5 +14,8 @@
         "user": "",
         "password": ""
     },
-    "edtURL": "https://edt.maner.fr/"
+    "url": {
+        "front": "https://edt.maner.fr",
+        "back": "https://edtapi.maner.fr"
+    }
 }
