@@ -17,5 +17,18 @@
     "url": {
         "front": "https://edt.maner.fr",
         "back": "https://edtapi.maner.fr"
+    },
+    "img": {
+        "cacheTime": 86400,
+        "viewport": {
+            "width": 1280,
+            "height": 900
+        },
+        "resize": {
+            "left": 12,
+            "top": 144,
+            "width": 1256,
+            "height": 610
+        }
     }
 }
