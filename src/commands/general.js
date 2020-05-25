@@ -7,10 +7,6 @@ exports.info = (msg) => {
     msg.channel.send(embed.getInfos(msg)).catch(o => {});
 }
 
-exports.url = (msg) => {
-    msg.reply("Emploi du temps en ligne : " + config.url.front).catch(o => {});
-}
-
 exports.me = (msg, content) => {
     sql.getEDTName(msg.author.id).then(edtName => {
         if (!edtName.length) return msg.reply("Vous n'avez jamais consulté d'emploi du temps").catch(o => {});

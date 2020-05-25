@@ -4,10 +4,9 @@ const config = require('../../config.json');
 
 exports.getInfos = (msg) => {
     let embed = getEmbed(msg);
-    embed.addField(`${config.discord.prefix}`, "Affiche la liste des emplois du temps", false);
-    embed.addField(`${config.discord.prefix}me`, "Affiche le dernier emploi du temps consulté", false);
-    embed.addField(`${config.discord.prefix}site`, "Site de consultation des emplois du temps", false);
-    embed.addField(`${config.discord.prefix}<id>`, "Affiche l'emploi du temps à la date du jour *(sauf weekends)*", false);
+    embed.addField(`${config.discord.prefix}list`, "Afficha la liste des EDTs", false);
+    embed.addField(`${config.discord.prefix}me`, "Affiche le dernier EDT consulté", false);
+    embed.addField(`${config.discord.prefix}<id>`, "Affiche l'EDT *(vue semaine)*", false);
     return embed;
 };
 
