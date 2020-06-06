@@ -37,10 +37,10 @@ async function checkIfNeedCapture(edtId, replyMsg) {
 
     try {
         const stat = await fs.stat(folder + name);
-        const limiteDate = moment().add(config.img.cacheTime, 'seconds');
-        const fileDate = moment(stat.mtime);
+        const limitedDate = moment(stat.mtime).add(config.img.cacheTime, 'seconds');
+        const currentDate = moment();
 
-        if (limiteDate.isAfter(fileDate))
+        if (limitedDate.isAfter(currentDate))
             return path;
     } catch (ex) {}
 
